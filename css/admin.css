@@ -1,0 +1,264 @@
+/* Reset et styles de base */
+.gprs-container * {
+    box-sizing: border-box;
+}
+
+.gprs-container {
+    max-width: 1200px;
+    margin: 20px 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+}
+
+/* Conteneurs principaux */
+.gprs-form-container,
+.gprs-result-container {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.gprs-form-container:hover,
+.gprs-result-container:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* Styles du formulaire */
+.form-group {
+    margin-bottom: 20px;
+    position: relative;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #23282d;
+}
+
+.form-group input[type="text"],
+.form-group select {
+    width: 100%;
+    max-width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 14px;
+    line-height: 1.4;
+    transition: all 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group select:focus {
+    border-color: #2271b1;
+    box-shadow: 0 0 0 1px #2271b1;
+    outline: none;
+}
+
+.description {
+    color: #666;
+    font-style: italic;
+    margin-top: 5px;
+    font-size: 13px;
+}
+
+/* Boutons */
+.button-primary {
+    background: #2271b1;
+    border-color: #2271b1;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.button-primary:hover {
+    background: #135e96;
+    border-color: #135e96;
+}
+
+/* Zone de résultat */
+#gprs-loading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+    background: #f0f0f1;
+    border-radius: 4px;
+    color: #50575e;
+}
+
+#gprs-loading .spinner {
+    float: none;
+    margin: 0;
+}
+
+#gprs-content {
+    background: #f6f7f7;
+    padding: 20px;
+    border-radius: 4px;
+    margin: 15px 0;
+    min-height: 150px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+/* Styles des notifications */
+.notice {
+    margin: 15px 0;
+    padding: 12px 15px;
+    border-radius: 4px;
+    border-left: 4px solid;
+}
+
+.notice-error {
+    background: #fcf0f1;
+    border-left-color: #dc3232;
+    color: #5b3434;
+}
+
+.notice-success {
+    background: #ecf7ed;
+    border-left-color: #00a32a;
+    color: #2a4b2d;
+}
+
+/* Bouton de copie */
+#gprs-copy {
+    margin-top: 10px;
+    background: #fff;
+    border: 1px solid #ddd;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#gprs-copy:hover {
+    background: #f0f0f1;
+    border-color: #999;
+}
+
+#gprs-copy.copied {
+    background: #ecf7ed;
+    border-color: #00a32a;
+    color: #00a32a;
+}
+
+/* Styles pour les titres */
+.gprs-result-container h3 {
+    margin-top: 0;
+    color: #23282d;
+    font-size: 16px;
+    font-weight: 600;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+}
+
+/* Animation pour le chargement */
+@keyframes pulse {
+    0% { opacity: 0.6; }
+    50% { opacity: 1; }
+    100% { opacity: 0.6; }
+}
+
+#gprs-loading .spinner {
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 782px) {
+    .gprs-container {
+        grid-template-columns: 1fr;
+        padding: 0 15px;
+    }
+
+    .form-group input[type="text"],
+    .form-group select {
+        font-size: 16px; /* Meilleur pour le mobile */
+        padding: 10px;
+    }
+
+    #gprs-content {
+        padding: 15px;
+    }
+}
+
+/* Support des thèmes sombres */
+@media (prefers-color-scheme: dark) {
+    .gprs-form-container,
+    .gprs-result-container {
+        background: #1f2937;
+        color: #e5e7eb;
+    }
+
+    .form-group label {
+        color: #e5e7eb;
+    }
+
+    .form-group input[type="text"],
+    .form-group select {
+        background: #374151;
+        border-color: #4b5563;
+        color: #e5e7eb;
+    }
+
+    #gprs-content {
+        background: #374151;
+        border-color: #4b5563;
+        color: #e5e7eb;
+    }
+
+    .description {
+        color: #9ca3af;
+    }
+
+    #gprs-copy {
+        background: #374151;
+        border-color: #4b5563;
+        color: #e5e7eb;
+    }
+
+    #gprs-copy:hover {
+        background: #4b5563;
+    }
+}
+
+/* Accessibilité */
+.gprs-container :focus {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+.gprs-container input:focus-visible,
+.gprs-container select:focus-visible {
+    outline: 2px solid #2271b1;
+    outline-offset: 2px;
+}
+
+/* Transitions fluides */
+.gprs-container {
+    transition: all 0.3s ease;
+}
+
+/* Support RTL */
+[dir="rtl"] .notice {
+    border-left: none;
+    border-right: 4px solid;
+}
+
+/* État désactivé */
+.gprs-container .disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    pointer-events: none;
+}
